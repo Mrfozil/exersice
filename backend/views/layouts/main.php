@@ -24,7 +24,8 @@ AppAsset::register($this);
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
-
+<style>
+</style>
 <header>
     <?php
     NavBar::begin([
@@ -34,9 +35,21 @@ AppAsset::register($this);
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
-    $menuItems = [
+    $menuItems = [ 
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Goods', 'url' => ['/goods/index']],
+        ['label' => 'Income', 'url' => ['/income/index']],
+        ['label' => 'Income Goods', 'url' => ['/income-goods/index']],
+        ['label' => 'Sale', 'url' => ['/sale/index']],
+        ['label' => 'Sale Goods', 'url' => ['/sale-goods/index']],
+
+
     ];
+    // $menuItems[] =  ['label' => 'Goods', 'url' => ['/goods/index']];
+    // $menuItems[] =  ['label' => 'Income', 'url' => ['/income/index']];
+    // $menuItems[] =  ['label' => 'Income goods', 'url' => ['/income-goods/index']];
+    // $menuItems[] =  ['label' => 'Sale', 'url' => ['/sale/index']];
+    // $menuItems[] =  ['label' => 'Sale goods', 'url' => ['/sale/index']];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
@@ -73,8 +86,15 @@ AppAsset::register($this);
         <p class="float-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
-
+<?php 
+    $this->registerJs(" 
+        $('label').addClass('form-control-label');
+       
+    ")
+?>
 <?php $this->endBody() ?>
 </body>
+
 </html>
 <?php $this->endPage();
+
